@@ -1,0 +1,60 @@
+.pictureContainer {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.imageContainer {
+    flex: 0 0 300px;
+    margin-right: 20px;
+}
+
+.image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.contentContainer {
+    flex: 1;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.date {
+    font-size: 14px;
+    color: gray;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.explanation {
+    margin-top: 0;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.copyRight {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.hdLink {
+    display: inline-block;
+    color: blue;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.hdLink:hover {
+    color: darkblue;
+}
