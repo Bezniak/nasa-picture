@@ -1,8 +1,7 @@
-import React, {useEffect, useState} from 'react';
-import {api} from "./api/api";
-import CalendarComponent from "./components/Calendar/CalendarComponent";
-import Picture from "./components/Picture/Picture";
-
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import CalendarComponent from './components/Calendar/CalendarComponent';
+import Picture from './components/Picture/Picture';
 
 const App = () => {
     const [selectedDates, setSelectedDates] = useState([]);
@@ -10,7 +9,11 @@ const App = () => {
 
     const sendDatesToServer = async (startDate, endDate) => {
         try {
-            const response = await api.get(`?start_date=${startDate}&end_date=${endDate}`);
+            const apiKey = '2LnvLoff9Oyvf0mgYyrABwCRJjbD2uvVyFHtYBtk';
+            const baseUrl = 'https://api.nasa.gov/planetary/apod';
+            const url = `${baseUrl}?api_key=${apiKey}&start_date=${startDate}&end_date=${endDate}`;
+            const response = await axios.get(url);
+
             setPictureData(response.data);
         } catch (error) {
             console.error(error);
@@ -39,7 +42,7 @@ const App = () => {
     }, []);
 
     return (
-        <div className='appContainer'>
+        <div className="appContainer">
             <CalendarComponent onChange={handleDateSelection} selectedDates={selectedDates} />
 
             {pictureData.map((data) => (
@@ -50,6 +53,8 @@ const App = () => {
                     explanation={data.explanation}
                     url={data.url}
                     hdurl={data.hdurl}
+                    media_type={data.media_type}
+                    service_version={data.service_version}
                     copyright={data.copyrigh}
                 />
             ))}
